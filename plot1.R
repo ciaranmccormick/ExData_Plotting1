@@ -18,5 +18,5 @@ dat <- subset(dat, DateTime >= as.POSIXlt('2007-02-01 00:00:00') & DateTime < as
 gap <- dat$Global_active_power
 png(file="plot1.png", width=480, height=480, units="px") # Open png device
 # Plot histogram with title and labels
-hist(gap, col="red", main="Global Active Power", xlab="Global Active Power (kilowats)")
+hist(gap, col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)")
 dev.off() # Close Device

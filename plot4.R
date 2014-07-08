@@ -16,7 +16,7 @@ dat <- subset(dat, DateTime >= as.POSIXlt('2007-02-01 00:00:00') & DateTime < as
 
 png(file="plot4.png", width=480, height=480, units="px") # Open png device
 par(mfrow=c(2,2))
-with(dat, plot(DateTime, Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)"))
+with(dat, plot(DateTime, Global_active_power, type="l", xlab="", ylab="Global Active Power"))
 with(dat, plot(DateTime, Voltage, type="l", xlab="datetime", ylab="Voltage"))
 with(dat, plot(DateTime,Sub_metering_1, type="n", xlab="", ylab="Energy sub metering"))
 # Draw 3 plots
