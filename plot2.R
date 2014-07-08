@@ -1,5 +1,3 @@
-?read.table
-
 # R Script to read in data from UC Irvine Machine Learning Repo and make an
 # exploratory histogram plot of Global Active Power vs Frequency for 2 days
 # in 2007-02-01 and 2007-02-02
