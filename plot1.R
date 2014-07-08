@@ -4,7 +4,7 @@
 
 # Assume file is in the current working directory
 fileName <- "household_power_consumption.txt"
-dat <- read.table(fileName, header=TRUE, sep=";")
+dat <- read.table(fileName, header=TRUE, sep=";", na.strings="?", colClasses=c(rep("character",2), rep("numeric",7)))
 
 # Extract Dates and Times and create DateTime type
 dateTimeFormat <- "%Y-%m-%d %H:%M:%S"
@@ -12,12 +12,9 @@ dates <- as.Date(dat$Date, format="%d/%m/%Y")
 dat$DateTime <- strptime(paste(dates,household$Time), dateTimeFormat)
 
 # Subset dat to get only consumption between 2007-02-01 and 2007-02-02
-datSubset <- subset(dat, DateTime >= as.POSIXlt('2007-02-01 00:00:00') & DateTime < as.POSIXlt('2007-02-03 00:00:00'), select = c(DateTime,Global_active_power))
-as.numeric(levels(datSubset$Global_active_power))
-# Extract the Global_active_power from data frame and remove levels
-gap <- as.numeric(levels(datSubset$Global_active_power))[datSubset$Global_active_power]
+dat <- subset(dat, DateTime >= as.POSIXlt('2007-02-01 00:00:00') & DateTime < as.POSIXlt('2007-02-03 00:00:00'), select = c(DateTime,Global_active_power))
+gap <- dat$Global_active_power
 png(file="plot1.png", width=480, height=480, units="px") # Open png device
-
 # Plot histogram with title and labels
 hist(gap, col="red", main="Global Active Power", xlab="Global Active Power (kilowats)")
 dev.off() # Close Device
